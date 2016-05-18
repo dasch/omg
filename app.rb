@@ -2,5 +2,5 @@ require "bundler/setup"
 require "sinatra"
 
 get '/' do
-  File.read(File.join("elm", "index.html"))
+  File.read(File.join("index.html"))
 end
