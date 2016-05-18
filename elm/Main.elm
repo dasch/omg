@@ -4,12 +4,13 @@ import Html.Attributes exposing (placeholder, value)
 import Html.Events exposing (onInput, onClick)
 
 import Model
+import Update exposing (Msg(SetEntry, Send))
 
 
 main =
   Html.App.beginnerProgram
     { model = Model.init
-    , update = update
+    , update = Update.update
     , view = view
     }
 
@@ -38,19 +39,3 @@ view model =
         [ Html.div [] messages
         , Html.div [] [input]
         ]
-
-
-type Msg = NoOp | SetEntry String | Send
-
-
-update : Msg -> Model.Model -> Model.Model
-update msg model =
-  case msg of
-    NoOp ->
-      model
-
-    SetEntry entry ->
-      { model | entry = entry }
-
-    Send ->
-      { model | entry = "", messages = model.entry :: model.messages }
