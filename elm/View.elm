@@ -2,7 +2,7 @@ module View exposing (view)
 
 
 import Html exposing (Html, div, text, button)
-import Html.Attributes exposing (placeholder, value)
+import Html.Attributes exposing (placeholder, autofocus, value)
 import Html.Events exposing (onInput, onClick)
 import Json.Decode
 
@@ -24,6 +24,7 @@ view model =
           div []
             [ Html.input
                 [ placeholder "Text"
+                , autofocus True
                 , onInput Input
                 , onEnter Send
                 , value model.entry
