@@ -4,7 +4,7 @@ class PubSub
   KEEPALIVE_TIME = 15 # in seconds
 
   def initialize(app)
-    @app     = app
+    @app = app
     @clients = []
     @messages = []
   end
