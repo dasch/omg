@@ -1,10 +1,16 @@
 module Update exposing (init, update, subscriptions, Msg(..))
 
 
+import WebSocket
+
 import Model exposing (Model)
 
 
-type Msg = Input String | Send
+type Msg = NewMessage String | Input String | Send
+
+
+socketUrl =
+  "ws://localhost:4567/"
 
 
 init : Cmd Msg
@@ -19,9 +25,16 @@ update msg model =
       ({ model | entry = entry }, Cmd.none)
 
     Send ->
-      ({ model | entry = "", messages = model.entry :: model.messages }, Cmd.none)
+      ({ model | entry = "" }, sendMessageCmd model.entry)
+
+    NewMessage message ->
+      ({ model | messages = message :: model.messages }, Cmd.none)
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-  Sub.none
+  WebSocket.listen socketUrl NewMessage
+
+
+sendMessageCmd entry =
+  WebSocket.send socketUrl entry
