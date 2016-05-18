@@ -1,7 +1,7 @@
 module View exposing (view)
 
 
-import Html exposing (..)
+import Html exposing (Html, div, text, button)
 import Html.Attributes exposing (placeholder, value)
 import Html.Events exposing (onInput, onClick)
 
@@ -17,20 +17,20 @@ view model =
           |> List.reverse
 
       viewMessage message =
-        Html.div [] [Html.text message]
+        div [] [text message]
 
       input =
-          Html.div []
+          div []
             [ Html.input
                 [ placeholder "Text"
                 , onInput SetEntry
                 , value model.entry
                 ]
                 []
-            , Html.button [onClick Send] [Html.text "Send"]
+            , button [onClick Send] [text "Send"]
             ]
   in
-      Html.div []
-        [ Html.div [] messages
-        , Html.div [] [input]
+      div []
+        [ div [] messages
+        , div [] [input]
         ]
