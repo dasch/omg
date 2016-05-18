@@ -3,26 +3,15 @@ import Html.App
 import Html.Attributes exposing (placeholder, value)
 import Html.Events exposing (onInput, onClick)
 
+import Model
+
 
 main =
   Html.App.beginnerProgram
-    { model = init
+    { model = Model.init
     , update = update
     , view = view
     }
-
-
-type alias Message = String
-
-
-type alias Model =
-  { messages : List Message
-  , entry : String
-  }
-
-
-init =
-    { messages = [], entry = "" }
 
 
 view model =
@@ -54,6 +43,7 @@ view model =
 type Msg = NoOp | SetEntry String | Send
 
 
+update : Msg -> Model.Model -> Model.Model
 update msg model =
   case msg of
     NoOp ->

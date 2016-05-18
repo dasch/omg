@@ -7163,6 +7163,15 @@ var _elm_lang$html$Html_Events$Options = F2(
 	function (a, b) {
 		return {stopPropagation: a, preventDefault: b};
 	});
+var _user$project$Model$init = {
+	messages: _elm_lang$core$Native_List.fromArray(
+		[]),
+	entry: ''
+};
+var _user$project$Model$Model = F2(
+	function (a, b) {
+		return {messages: a, entry: b};
+	});
 var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
@@ -7181,15 +7190,6 @@ var _user$project$Main$update = F2(
 						messages: A2(_elm_lang$core$List_ops['::'], model.entry, model.messages)
 					});
 		}
-	});
-var _user$project$Main$init = {
-	messages: _elm_lang$core$Native_List.fromArray(
-		[]),
-	entry: ''
-};
-var _user$project$Main$Model = F2(
-	function (a, b) {
-		return {messages: a, entry: b};
 	});
 var _user$project$Main$Send = {ctor: 'Send'};
 var _user$project$Main$SetEntry = function (a) {
@@ -7256,7 +7256,7 @@ var _user$project$Main$view = function (model) {
 };
 var _user$project$Main$main = {
 	main: _elm_lang$html$Html_App$beginnerProgram(
-		{model: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Main$view})
+		{model: _user$project$Model$init, update: _user$project$Main$update, view: _user$project$Main$view})
 };
 var _user$project$Main$NoOp = {ctor: 'NoOp'};
 var Elm = {};
