@@ -6,6 +6,7 @@ class PubSub
   def initialize(app)
     @app     = app
     @clients = []
+    @messages = []
   end
 
   def call(env)
@@ -23,6 +24,9 @@ class PubSub
 
     ws.on :open do
       @clients << ws
+      @messages.each do |message|
+        ws.send(message)
+      end
     end
 
     ws.on :close do
@@ -30,6 +34,8 @@ class PubSub
     end
 
     ws.on :message do |event|
+      @messages << event.data
+
       @clients.each do |client|
         client.send(event.data)
       end
