@@ -6,7 +6,7 @@ import Html.Attributes exposing (placeholder, value)
 import Html.Events exposing (onInput, onClick)
 
 import Model exposing (Model)
-import Update exposing (Msg(SetEntry, Send))
+import Update exposing (Msg(Input, Send))
 
 
 view : Model -> Html Msg
@@ -23,7 +23,7 @@ view model =
           div []
             [ Html.input
                 [ placeholder "Text"
-                , onInput SetEntry
+                , onInput Input
                 , value model.entry
                 ]
                 []

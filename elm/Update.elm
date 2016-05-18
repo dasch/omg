@@ -1,10 +1,10 @@
-module Update exposing (init, update, subscriptions, Msg(SetEntry, Send))
+module Update exposing (init, update, subscriptions, Msg(..))
 
 
 import Model exposing (Model)
 
 
-type Msg = NoOp | SetEntry String | Send
+type Msg = Input String | Send
 
 
 init : Cmd Msg
@@ -15,10 +15,7 @@ init =
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
-    NoOp ->
-      (model, Cmd.none)
-
-    SetEntry entry ->
+    Input entry ->
       ({ model | entry = entry }, Cmd.none)
 
     Send ->
