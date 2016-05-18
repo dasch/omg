@@ -6,8 +6,9 @@ import Update
 
 
 main =
-  Html.App.beginnerProgram
-    { model = Model.init
+  Html.App.program
+    { init = (Model.init, Update.init)
     , update = Update.update
+    , subscriptions = Update.subscriptions
     , view = View.view
     }
