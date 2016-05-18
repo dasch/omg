@@ -51,5 +51,5 @@ onKeyDown keycode msg =
 
 
 onEnter : msg -> Html.Attribute msg
-onEnter msg =
-  onKeyDown 13 msg
+onEnter =
+  onKeyDown 13
